@@ -1,0 +1,30 @@
+Google Recaptcha verification
+
+<!-- method 
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+ <?php
+    if(isset($_POST['g-recaptcha-response']))
+    {
+        $secretkey = '6LepEnAgAAAAAMMhWt6_orbMtXG0ULMvcs_UD38M';
+        $ip = $_SERVER['REMOTE_ADDR'];
+        $response = $_POST['g-recaptcha-response'];
+        $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$response&remoteip=$ip";
+        $fire = file_get_contents($url);
+    }
+    else
+    {
+        echo '<script> swal("Cancelled","Failed to Submit,"error")</script>';  
+    }
+   ?>
+
+
+*************** Form code **********
+
+<div class="g-recaptcha" data-sitekey="6LepEnAgAAAAAHnCetdMMrwzrKcqSjvBu9Emop0M"></div>
+
+
+
+
+
